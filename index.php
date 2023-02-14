@@ -7,7 +7,7 @@ echo "<body>";
 include("headfile.html"); //include header layout file
 echo "<h4>" . $pagename . "</h4>"; //display name of the page on the web page
 //create a $SQL variable and populate it with a SQL statement that retrieves product details
-$SQL = "select prodId, prodName, prodPicNameSmall, prodDescripLong, prodPrice from Products";
+$SQL = "select prodId, prodName, prodPicNameSmall, prodDescripShort, prodPrice from Products";
 //run SQL query for connected DB or exit and display error message
 $exeSQL = mysqli_query($conn, $SQL) or die(mysqli_error($conn));
 echo "<table style='border: 0px'>";
@@ -26,8 +26,8 @@ while ($arrayp = mysqli_fetch_array($exeSQL)) {
     echo "</td>";
     echo "<td style='border: 0px'>";
     echo "<p><h5>" . $arrayp['prodName'] . "</h5>"; //display product name as contained in the array
-    echo "<p>" . $arrayp['prodDescripLong'];
-    echo "<p><b>" . $arrayp['prodPrice'] . "</b>";
+    echo "<p>" . $arrayp['prodDescripShort'];
+    echo "<p><b>&#163;" . $arrayp['prodPrice'] . "</b>";
     echo "</td>";
     echo "</tr>";
 }
