@@ -7,7 +7,7 @@ echo "<body>";
 include("headfile.html"); //include header layout file
 echo "<h4>" . $pagename . "</h4>"; //display name of the page on the web page
 //create a $SQL variable and populate it with a SQL statement that retrieves product details
-$SQL = "select prodId, prodName, prodPicNameSmall, prodDescripLong, prodPrice from Product";
+$SQL = "select prodId, prodName, prodPicNameSmall, prodDescripLong, prodPrice from Products";
 //run SQL query for connected DB or exit and display error message
 $exeSQL = mysqli_query($conn, $SQL) or die(mysqli_error($conn));
 echo "<table style='border: 0px'>";
