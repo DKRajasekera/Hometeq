@@ -15,7 +15,6 @@ echo "<table style='border: 0px'>";
 //populate it with the records retrieved by the SQL query previously executed.
 //Iterate through the array i.e while the end of the array has not been reached, run through it
 while ($arrayp = mysqli_fetch_array($exeSQL)) {
-    echo "<tr>";
     echo "<td style='border: 0px'>";
     //make the image into an anchor to prodbuy.php and pass the product id by URL (the id from the array)
     echo "<a href=prodbuy.php?u_prod_id=" . $arrayp['prodId'] . ">";
@@ -25,7 +24,7 @@ while ($arrayp = mysqli_fetch_array($exeSQL)) {
     echo "</a>";
     echo "</td>";
     echo "<td style='border: 0px'>";
-    echo "<p><h5>" . $arrayp['prodName'] . "</h5>"; //display product name as contained in the array
+    echo "<h5>" . $arrayp['prodName'] . "</h5>"; //display product name as contained in the array
     echo "<p>" . $arrayp['prodDescripShort'];
     echo "<p><b>&#163;" . $arrayp['prodPrice'] . "</b>";
     echo "</td>";
