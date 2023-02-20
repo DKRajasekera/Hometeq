@@ -47,6 +47,4 @@
     //echo "<p>Selected product Id: " . $prodid;//display the value of the product id, for debugging purposes
     include("footfile.html"); //include head layout
     echo "</body>";
-
-    evevewv
 ?>
