@@ -29,4 +29,7 @@ Because virtual assistants live in a speaker with a microphone, they’re presen
 Whatever smart tech you are after, homteq has it on offer!";
 include("footfile.html"); //include head layout
 echo "</body>";
+
+
+hhwwv
 ?>
