@@ -11,39 +11,47 @@ if (isset($_POST['h_prodid'])) {
     $newprodid = $_POST['h_prodid'];
     $reququantity = $_POST['p_prodQuantity'];
 
-    $_SESSION['basket'] [$newprodid] = $reququantity;
+    $_SESSION['basket'][$newprodid] = $reququantity;
     echo "<p> 1 item added to the basket</p>";
 } else {
     echo "<p> Basket unchanged </p>";
 }
 
-if(isset($_SESSION['basket'])){
-    foreach($_SESSION['basket'] as $index => $value ){
+if (isset($_SESSION['basket'])) {
+    foreach ($_SESSION['basket'] as $index => $value) {
         $SQL = "select prodId, prodName, prodPrice from Products WHERE prodId = $index";
         $exeSQL = mysqli_query($conn, $SQL) or die(mysqli_error($conn));
         $select = mysqli_fetch_array($exeSQL);
-
+        echo "<table class = 'table1' style='border: 1px'>";
         echo "<tr>";
-            echo "<td>".$select['prodName']."</td>";
-            echo "<td>&pound".number_format($select['prodPrice'],2)."</td>";
-            echo "<td style ='text-align:center;'>".$value."</td>";
-            $subtotal = $select['prodPrice']*$value;
-            echo "<td>&pound".number_format($subtotal ,2)."</td>";
-            echo "<form action=basket.php method=post>";
-                echo "<td> ";
-                    echo "<input type=submit  value='Remove' id='submitbtn'>";
-                echo"</td>";
-                echo "<input type=hidden name=del_prodid value=".$prodinbasketarray['prodId'].">";
-            echo "</form>";
+        echo "<th> Product Name </th>";
+        echo "<th> Price </th>";
+        echo "<th> Quantity </th>";
+        echo "<th> Subtotal </th>";
         echo "</tr>";
+        echo "<tr>";
+        echo "<td>" . $select['prodName'] . "</td>";
+        echo "<td>&pound" . number_format($select['prodPrice'], 2) . "</td>";
+        echo "<td style ='text-align:center;'>" . $value . "</td>";
+        $subtotal = $select['prodPrice'] * $value;
+        echo "<td>&pound" . number_format($subtotal, 2) . "</td>";
+        // echo "<form action=basket.php method=post>";
+        //     echo "<td> ";
+        //         echo "<input type=submit  value='Remove' id='submitbtn'>";
+        //     echo"</td>";
+        //     echo "<input type=hidden name=del_prodid value=".$prodinbasketarray['prodId'].">";
+        // echo "</form>";
+        echo "</tr>";
+        echo "<tr>"; 
+        echo "<td colspan= '3'> <p> Total </p> </td>";
+        echo "<td>&pound" . $total =+ $subtotal. "</td>";
+        echo "</tr>";
+        echo "</table>";
 
-        $total=$total+$subtotal;
-
-        
     }
 } else {
-echo "<p> Empty Basket </p>";
-    }
+    echo "<p> Empty Basket </p>";
+}
 
 include("footfile.html"); //include head layout
 echo "</body>";
