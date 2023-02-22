@@ -31,9 +31,9 @@
     //create form made of one text field and one button for user to enter quantity
     //the value entered in the form will be posted to the basket.php to be processed
     echo "<form action=basket.php method=post><br>";
-    echo "<select name=>";
+    echo "<select name = p_prodQuantity id = p_prodQuantity>";
     for ($count = 0; $count <= $selected['prodQuantity']; $count++) {
-        echo "<option value=> $count </option>";
+        echo "<option value= ".$count.">" .$count. "</option>";
     }
     "</select>";
     echo "<input type=submit name='submitbtn' value='ADD TO BASKET' id='submitbtn'>";
