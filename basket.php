@@ -16,42 +16,41 @@ if (isset($_POST['h_prodid'])) {
 } else {
     echo "<p> Basket unchanged </p>";
 }
-
+echo "<table class = 'table1' style='border: 1px'>";
+echo "<tr>";
+echo "<th> Product Name </th>";
+echo "<th> Price </th>";
+echo "<th> Quantity </th>";
+echo "<th> Subtotal </th>";
+echo "</tr>";
 if (isset($_SESSION['basket'])) {
     foreach ($_SESSION['basket'] as $index => $value) {
         $SQL = "select prodId, prodName, prodPrice from Products WHERE prodId = $index";
         $exeSQL = mysqli_query($conn, $SQL) or die(mysqli_error($conn));
         $select = mysqli_fetch_array($exeSQL);
-        echo "<table class = 'table1' style='border: 1px'>";
-        echo "<tr>";
-        echo "<th> Product Name </th>";
-        echo "<th> Price </th>";
-        echo "<th> Quantity </th>";
-        echo "<th> Subtotal </th>";
-        echo "</tr>";
+
         echo "<tr>";
         echo "<td>" . $select['prodName'] . "</td>";
         echo "<td>&pound" . number_format($select['prodPrice'], 2) . "</td>";
         echo "<td style ='text-align:center;'>" . $value . "</td>";
         $subtotal = $select['prodPrice'] * $value;
         echo "<td>&pound" . number_format($subtotal, 2) . "</td>";
+        echo "</tr>";
         // echo "<form action=basket.php method=post>";
         //     echo "<td> ";
         //         echo "<input type=submit  value='Remove' id='submitbtn'>";
         //     echo"</td>";
         //     echo "<input type=hidden name=del_prodid value=".$prodinbasketarray['prodId'].">";
         // echo "</form>";
-        echo "</tr>";
-        echo "<tr>"; 
-        echo "<td colspan= '3'> <p> Total </p> </td>";
-        echo "<td>&pound" . $total =+ $subtotal. "</td>";
-        echo "</tr>";
-        echo "</table>";
-
     }
 } else {
     echo "<p> Empty Basket </p>";
 }
+echo "<tr>";
+echo "<td colspan= '3'> <p> Total </p> </td>";
+echo "<td>&pound" . $total = +$subtotal . "</td>";
+echo "</tr>";
+echo "</table>";
 
 include("footfile.html"); //include head layout
 echo "</body>";
