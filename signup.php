@@ -56,5 +56,5 @@ function clearForm() {
       inputs[i].value = ''; // reset the value of each input to an empty string
     }
   }
-  </script>"
-    ?>
+ </script>"
+  ?>
